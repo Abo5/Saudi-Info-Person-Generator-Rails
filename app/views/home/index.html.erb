@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Saudi Arabia Info Person Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-image: url('assets/background.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .neon-blue { color: #89CFF0; text-shadow: 0 0 8px #89CFF0, 0 0 15px #89CFF0; }
+    .neon-green { color: #39FF14; text-shadow: 0 0 8px #39FF14, 0 0 15px #39FF14; }
+    .neon-red { color: #FF073A; text-shadow: 0 0 8px #FF073A, 0 0 15px #FF073A; }
+    .neon-yellow { color: #FFFF33; text-shadow: 0 0 8px #FFFF33, 0 0 15px #FFFF33; }
+    .neon-purple { color: #8A2BE2; text-shadow: 0 0 8px #8A2BE2, 0 0 15px #8A2BE2; }
+  </style>
+</head>
+<body class="bg-black bg-opacity-75">
+  <div class="container mx-auto py-12">
+    <h1 class="text-5xl font-bold text-center text-white mb-10 animate-fade-in-down">Saudi Arabia Info Person Generator</h1>
+
+    <div class="rounded-lg shadow-lg p-8 mb-10 animate-fade-in-up">
+      <div class="grid grid-cols-2 gap-6 mb-8">
+        <div>
+          <p class="text-xl font-semibold text-white mb-2">Full Name:</p>
+          <p class="text-3xl font-bold neon-blue animate-pulse"><%= @person[:fullname] %></p>
+        </div>
+        <div>
+          <p class="text-xl font-semibold text-white mb-2">Gender:</p>
+          <p class="text-3xl font-bold neon-green animate-pulse"><%= @person[:gender] %></p>
+        </div>
+        <div>
+          <p class="text-xl font-semibold text-white mb-2">National ID:</p>
+          <p class="text-3xl font-bold neon-red animate-pulse"><%= @person[:id] %></p>
+        </div>
+        <div>
+          <p class="text-xl font-semibold text-white mb-2">Age:</p>
+          <p class="text-3xl font-bold neon-yellow animate-pulse"><%= @person[:age] %></p>
+        </div>
+        <div>
+          <p class="text-xl font-semibold text-white mb-2">Region:</p>
+          <p class="text-3xl font-bold neon-purple animate-pulse"><%= @person[:region] %></p>
+        </div>
+        <div>
+          <p class="text-xl font-semibold text-white mb-2">ZIP Code:</p>
+          <p class="text-3xl font-bold neon-blue animate-pulse"><%= @person[:zip_code] %></p>
+        </div>
+        <div>
+          <p class="text-xl font-semibold text-white mb-2">Province:</p>
+          <p class="text-3xl font-bold neon-green animate-pulse"><%= @person[:province] %></p>
+        </div>
+        <div>
+          <p class="text-xl font-semibold text-white mb-2">Street:</p>
+          <p class="text-3xl font-bold neon-red animate-pulse"><%= @person[:street] %></p>
+        </div>
+        <div>
+          <p class="text-xl font-semibold text-white mb-2">Full Address:</p>
+          <p class="text-2xl font-bold neon-yellow animate-pulse"><%= @person[:full_address] %></p>
+        </div>
+      </div>
+    </div>
+
+    <%= form_with(url: root_path, method: :get, local: true, class: "text-center") do |form| %>
+      <%= form.submit 'Generate', class: 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110 animate-pulse' %>
+    <% end %>
+  </div>
+
+  <script>
+    function animateElements() {
+      const elements = document.querySelectorAll('.animate-fade-in-down, .animate-fade-in-up');
+      elements.forEach((element, index) => {
+        setTimeout(() => {
+          element.classList add('opacity-100', 'translate-y-0');
+        }, index * 200);
+      });
+    }
+
+    animateElements();
+  </script>
+</body>
+</html>
